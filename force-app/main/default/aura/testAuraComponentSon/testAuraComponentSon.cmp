@@ -1,0 +1,10 @@
+<aura:component controller="testAuraClass" implements="flexipage:availableForAllPageTypes" access="global" >
+	<aura:attribute name="sonName" type="String" default="son" />
+	<div class="divClass1">
+		<p>{!v.sonName}</p>
+	</div>
+	<div class="divClass2">
+		<p>{!v.sonName}</p>
+		<lightning:button class="slds-button slds-button_success" variant="success" label="Success" title="Success" onclick="{!c.onClick}"/>
+	</div>
+</aura:component>

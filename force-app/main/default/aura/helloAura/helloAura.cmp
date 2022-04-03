@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="helloAuraController">
+<aura:attribute name="message" type="String"/>
+<aura:registerEvent name="helloAuraEvent11" type="c:helloAuraEvent"/>
+<div class="container">
+    <p>{!v.message}</p>
+    <lightning:button class="slds-align_absolute-center" label="query" variant="brand" onclick="{!c.handleClick}"/>
+</div>
+</aura:component>

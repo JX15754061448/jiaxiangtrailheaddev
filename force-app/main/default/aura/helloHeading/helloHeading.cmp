@@ -1,0 +1,29 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+<aura:attribute name="accountList" type="Object[]"/>
+<aura:handler name="helloAuraEvent11" event="c:helloAuraEvent" action="{!c.handleEvent}"/>
+<lightning:card title="Hello Aura" iconName="custom:custom14">
+	<div class="mainContainer">
+		<c:helloAura message="Aura query accounts"/>
+		<aura:if isTrue="{!v.accountList.length > 0}">
+			<div class="wraperClass">
+				<table class="tableClass">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<aura:iteration items="{!v.accountList}" var="account">
+						<tr>
+							<td>{!account.Id}</td>
+							<td>{!account.Name}</td>
+						</tr>
+						</aura:iteration>
+					</tbody>
+				</table>
+			</div>
+		</aura:if>
+	</div>
+</lightning:card>
+</aura:component>

@@ -1,0 +1,16 @@
+
+.THIS .mainContainer {
+	padding: 0px 10px;
+}
+.THIS .tableClass {
+	border:1px solid black;
+	background-color: white;
+}
+.THIS .tableClass th {
+	padding-left: 10px;
+	border:1px solid black;
+}
+.THIS .tableClass td {
+	padding-left: 10px;
+	border:1px solid black;
+}

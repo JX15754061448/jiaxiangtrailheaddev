@@ -1,0 +1,29 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!--The empApi component Exposes the EmpJs Streaming API library which provides methods to subscribe and unsubscribe to a platform event channel using CometD(available in API version 44.0 or above)-->
+    <lightning:empApi aura:id="empApi"/>
+    <!-- Attribute to store platform event channel name -->
+    <aura:attribute name="channel" type="String" default="/event/Notification_Event__e"/>
+    <!--Displays messages via notices and toasts. This component requires API version 41.0 and later.-->
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <!--Attribute to store object that is returned by the empApi.subscribe() method-->
+    <aura:attribute name="subscription" type="Map"/>
+    <!--attribute to show/ hide platform event message-->
+    <aura:attribute name="ltngShowEventMessage" type="boolean" default="false"/>
+    <aura:attribute name="ltngEventMessage" type="String" default=""/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+
+
+    <!-- Display Messages recieved from Platform events -->
+    <aura:if isTrue="{!v.ltngShowEventMessage}">
+        <div style="background-color:#E6E6FA;border-style: solid;margin:5%;padding:2%;">
+            Platform Event Recieved-  {!v.ltngEventMessage}
+        </div>
+    </aura:if>
+    <c:auraModal showModal="{!v.ltngShowEventMessage}" title="alert title" message="{!v.ltngEventMessage}"></c:auraModal>
+
+    <aura:if isTrue="{!not(v.ltngShowEventMessage)}">
+        <div style="background-color:#E6E6FA;border-style: solid;margin:5%;padding:2%;">
+            Waiting for Platform Event message
+        </div>
+    </aura:if>
+</aura:component>

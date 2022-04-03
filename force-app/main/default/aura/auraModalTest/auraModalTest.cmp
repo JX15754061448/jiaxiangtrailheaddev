@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="showModal" type="boolean" default="false" />
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:handler event="c:overLayModalEvent" action="{!c.handleOverLayModalEvent}"/>
+
+    <c:auraModal showModal="{!v.showModal}" title="alert title" message="This is alert message!"></c:auraModal>
+    <lightning:button variant="brand-outline" label="Show Modal" title="Show Modal" onclick="{!c.handleClick}" />
+    <lightning:button variant="brand-outline" label="Show Overlay Modal" title="Show Overlay Modal" onclick="{!c.handleOverlayClick}" />
+</aura:component>

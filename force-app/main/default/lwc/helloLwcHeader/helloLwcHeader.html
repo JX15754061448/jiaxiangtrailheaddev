@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Hello LWC" icon-name="custom:custom12">
+	<div class="mainContainer">
+		<c-hello-l-w-c message="Lwc query accounts" onclick={getAccounts}></c-hello-l-w-c>
+        <template if:true={accountList.length}>
+			<div class="wraperClass">
+				<table class="tableClass">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+						</tr>
+					</thead>
+					<tbody>
+                        <template for:each={accountList} for:item="account">
+                            <tr key={account.Id}>
+                                <td>{account.Id}</td>
+                                <td>{account.Name}</td>
+                            </tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+        </template>
+	</div>
+</lightning-card>
+</template>

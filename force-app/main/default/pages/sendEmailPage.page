@@ -1,0 +1,89 @@
+<apex:page Controller="sendEmailController" sidebar="false">
+<style>
+   #resultCover{
+        width: 500px;
+    }
+ </style>
+    <script type="text/javascript">
+        function closeWindow(){
+
+            //判断标志位关闭本window(commandButton逻辑执行完后，关闭本页面)
+            if ({!refreshNum} == 1) {
+            alert('成功');
+
+                window.close();
+                }
+        }
+        /*
+        var inputEmail='';
+        function inputTextChange(text){
+        inputEmail=text;
+        }
+    $(document).ready(function(){
+    //循环检测窗口是否关闭
+    var loop = setInterval(function() {   
+        //如果新窗口关闭了，刷新原来的页面  
+        if(new_window.closed) {    
+            clearInterval(loop);    
+            window.location.reload();
+        }    
+    }, 1000);
+
+    }*/
+   </script>
+
+       
+    <apex:form id="form">
+    <script type="text/javascript">
+        function closeWindow(){
+
+            //判断标志位关闭本window(commandButton逻辑执行完后，关闭本页面)
+            if ({!refreshNum} == 1) {
+            alert('发送成功');
+
+                window.close();
+                }
+        }
+        function emailtext(){
+            return '啊肯定卡来得及；安家； 就；按季度；垃圾袋；安家； ；阿垃圾袋；加；豆浆； ';
+        }
+        
+   </script>
+ 
+          <apex:pageBlock >
+             <div align="center" >
+             <apex:commandButton action="{!send}" value="发送邮件" style="width: 80px" oncomplete="closeWindow()" reRender="form">
+               <apex:param id="emailId" name="emailAddress" value="inputEmail" assignTo="{! emailAddress}"/>
+               <apex:param id="desctiptId" name="description" value="这样好使吧" assignTo="{! description}"/>
+             </apex:commandButton>
+             <br />
+             <div style="margin-top:30px;">
+             <apex:pageMessage detail="务必输入正确的邮箱格式" summary="请输入tickit的接收人邮箱" severity="warning" strength="2" />
+             </div>
+
+             </div>
+
+
+
+
+        
+
+        <!-- <apex:pageMessages /> -->
+        
+        <br/>
+        <apex:pageBlockSection showHeader="true" columns="12">
+
+        <div align="center">
+        <apex:outputLabel >请输入邮箱(发送内容：{!getDescription})</apex:outputLabel>
+
+        <apex:inputText id="inputEmailId" value="{!inputValue}"/>
+
+        </div>
+        </apex:pageBlockSection>
+
+        
+        
+    </apex:pageBlock>
+
+    </apex:form>
+</apex:page>

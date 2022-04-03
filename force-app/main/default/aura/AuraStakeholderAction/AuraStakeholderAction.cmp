@@ -1,0 +1,124 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="StakeholderActionController">
+    <aura:attribute name="selectedRecords" type="lwcCustomLookupController.SObjectResult[]" description="text" ></aura:attribute>
+    <aura:attribute name="selectUserName" type="String" description="text" ></aura:attribute>
+    <aura:attribute name="selectUserId" type="String" description="text" ></aura:attribute>
+    <aura:attribute name="selectContactName" type="String" description="text" ></aura:attribute>
+    <aura:attribute name="selectContactId" type="String" description="text" ></aura:attribute>
+    <aura:attribute name="isSaving" type="Boolean" description="Display spinner when saving" ></aura:attribute>
+    <aura:attribute name="isAllDayEvent" type="Boolean" default="false" ></aura:attribute>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+    <div class="container">
+        <aura:html tag="style">
+            .slds-modal__container{
+                width: 869px !important;
+                max-width: 869px !important;
+                height: 750px !important;
+            }
+            .slds-modal__content{
+                width:100% !important;
+                height:100% !important;
+                max-height:100% !important;
+                padding: 13px 0px 0px 0px;
+            }
+            .container {
+                width:100%;
+                height: 550px !important;
+                left:0px;
+                overflow: auto;
+            }
+        </aura:html>
+        <div class="action_header slds-modal__header">
+            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">New Event</h1>
+        </div>
+        <h3 class="slds-section__title slds-theme--shade">
+            <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">Calendar Details</span>
+        </h3>
+        <aura:if isTrue="{!v.isSaving}">
+            <lightning:spinner variant="brand" aura:id="spinner" class="slds-show backgroundSpinner" alternativeText="" />
+        </aura:if>
+        <lightning:layout >
+            <lightning:layoutItem size="6" padding="around-small">
+                <lightning:input aura:id="subject" Name="Subject" label="Subject" placeholder="" />
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" padding="around-small">
+                <lightning:input variant="label-stacked" checked="{!v.isAllDayEvent}" type="checkbox" label="All-Day Event" name="allDayEvent"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout >
+            <lightning:layoutItem size="6" padding="around-small">
+                <lightning:input type="datetime" aura:id="startDate" name="startDate" label="Start" required="true"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" padding="around-small">
+                <lightning:input type="datetime" aura:id="endDate" name="endDate" label="End" required="true"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout >
+            <lightning:layoutItem size="6" padding="around-small">
+                <!-- <lightning:card title=""> -->
+                <c:lwcMultiLookup aura:id="relatedto" label="Related To" objectName="Account" fieldName="Name" required="true" placeholder="Search Accounts..."
+                                iconName = "standard:account" onselected="{!c.selectedRecords}"/>
+
+                    <!-- <div class="slds-page-header">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <span class="slds-icon_container slds-icon-standard-opportunity" title="Account Record">
+                                </span>
+                            </div>
+                            <div class="slds-media__body">
+                                <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Account Record">Accounts</h1>
+                                <p class="slds-text-body_small slds-line-height_reset"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-text-title_caps">
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Account Id">Account Id</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Account Name">Account Name</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration var="selectRec" items="{!v.selectedRecords}">
+                                <tr>
+                                    <th scope="row" data-label="Account Id">
+                                        <div class="slds-truncate" title="{!selectRec.recId}"><a id="{!selectRec.recId}">{!selectRec.recId}</a></div>
+                                    </th>
+                                    <td data-label="Account Name">
+                                        <div class="slds-truncate" title="{!selectRec.recName}">{!selectRec.recName}</div>
+                                    </td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table> -->
+                <!-- </lightning:card> -->
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" padding="around-small">
+                <c:lwcCustomLookup label="Name" required="false" aura:id="eventName" objectName="Contact" fieldName="Name" selectRecordId="{!v.selectContactId}" placeholder="Search Contact..."
+                                selectRecordName="{!v.selectContactName}" iconName = "standard:contact" onselected="{!c.selectedContactRecord}"/>
+            </lightning:layoutItem>
+            <!--<lightning:layoutItem size="6" padding="around-small">
+                <c:lwcCustomLookup label="Assigned To" required="true" aura:id="assignto" objectName="User" fieldName="Name" selectRecordId="{!v.selectUserId}" placeholder="Search People..."
+                                selectRecordName="{!v.selectUserName}" iconName = "standard:user" onselected="{!c.selectedUserRecord}"/>
+                    Selected Record Name: {!v.selectRecordName} <br/>
+                    Selected Record Id: {!v.selectRecordId}
+            </lightning:layoutItem>-->
+        </lightning:layout>
+        <h3 class="slds-section__title slds-theme--shade">
+            <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">Description Information</span>
+        </h3>
+        <lightning:layout >
+            <lightning:layoutItem size="12" padding="around-small">
+                <lightning:textarea aura:id="description" name="description" label="Description" />
+            </lightning:layoutItem>
+        </lightning:layout>
+        <div class="action_footer slds-modal__footer">
+            <button class="slds-button slds-button_neutral" onclick="{!c.handleCancel}" aria-label="Cancel and close">Cancel</button>
+            <button class="slds-button slds-button_brand" onclick="{!c.handleSave}">Save</button>
+        </div>
+    </div>
+</aura:component>

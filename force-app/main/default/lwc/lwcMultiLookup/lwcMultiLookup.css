@@ -1,0 +1,24 @@
+div input[readonly] {
+    padding-left: 1.75rem !important;
+}
+.slds-input{
+    padding-left: 1.75rem !important;
+}
+
+.slds-input-has-icon .slds-input__icon {
+    top: 33px !important;
+}
+
+.object_icon {
+    margin-left: 3px !important;
+}
+
+.slds-icon_small, .slds-icon--small {
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 2;
+}
+
+.multi_user_input {
+    margin-top: 3px;
+}

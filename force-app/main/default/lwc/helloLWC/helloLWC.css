@@ -1,0 +1,14 @@
+.container {
+	padding-bottom: 10px;
+}
+.container p {
+	background-color: rgb(21,122,123);
+	height: 20px;
+	margin-bottom: 10px;
+    font-size: 14px;
+	text-align: center;
+    color:  #FFFFFF;;
+}
+.container Button {
+	width: 100px;
+}

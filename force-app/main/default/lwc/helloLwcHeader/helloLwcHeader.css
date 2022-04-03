@@ -1,0 +1,15 @@
+.mainContainer {
+	padding: 0px 10px;
+}
+.tableClass {
+	border:1px solid black;
+	background-color: white;
+}
+.tableClass th {
+	padding-left: 10px;
+	border:1px solid black;
+}
+.tableClass td {
+	padding-left: 10px;
+	border:1px solid black;
+}

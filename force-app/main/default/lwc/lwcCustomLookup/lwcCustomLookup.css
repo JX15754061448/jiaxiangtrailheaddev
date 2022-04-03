@@ -1,0 +1,23 @@
+div input[readonly] {
+    padding-left: 30px !important;
+}
+.slds-input{
+    padding-left: 30px !important;
+}
+
+.slds-input-has-icon .slds-input__icon {
+    top: 33px !important;
+}
+
+.object_icon {
+    margin-left: 3px !important;
+}
+
+.slds-icon_small, .slds-icon--small {
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 2;
+}
+.clear_button {
+    margin-top: 7px !important;
+}

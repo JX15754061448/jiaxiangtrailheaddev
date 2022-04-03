@@ -1,0 +1,93 @@
+<apex:page>
+  <!-- Begin Default Content REMOVE THIS -->
+  <!-- 开发环境版本，包含了有帮助的命令行警告
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>-->
+  <!-- 生产环境版本，优化了尺寸和速度-->
+  <apex:slds />
+  <head>
+    <style>
+        #app {
+            width: 98%;
+            margin-left: 10px;
+        }
+
+        .section p:first-child{
+            border: solid;
+            background-color:tan;
+            border-radius: 5px;
+        }
+
+        #app ol li{
+            background-color:tan;
+            padding-left: 10px;
+        }
+    </style>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<html xmlns:v-on="http://fake.org/fake"
+      xmlns:v-bind="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+  <div style="margin-bottom: 10px; margin-left: 10px">Congratulations This is jiaxiang's new Page</div>
+
+  <div id="app" class="slds-panel">
+    <apex:pageBlock title="User Status">
+        <apex:pageBlockSection columns="1">
+        <div class="section">
+            <p>{! $User.FirstName } {! $User.LastName }({! $User.Username })</p>
+            <p> Today's Date is {! TODAY() } </p>
+            <p> Next week it will be {! TODAY() + 7 } </p>
+            <p>The year today is {! YEAR(TODAY()) }</p>
+            <p>Tomorrow will be day number  {! DAY(TODAY() + 1) }</p>
+            <p>Let's find a maximum: {! MAX(1,2,3,4,5,6,5,4,3,2,1) } </p>
+            <p>The square root of 49 is {! SQRT(49) }</p>
+            <p>Is it true?  {! CONTAINS('salesforce.com', 'force.com') }</p>
+            <a href='/lightning/n/Bike_Card?name=2020202'>Link to Tab here</a>
+            <p>{{ pageDate }}</p>
+        </div>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <!--********************************************Vue Test*********************************************-->
+    <div>
+        <p>{{ message }}</p>
+        <p v-if="seen">See you</p>
+        <input v-model="message" /><!--双向绑定-->
+        <button v-on:click="reverseMessage">Revise message</button>
+        <ol>
+            <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id"
+            ></todo-item>
+        </ol>
+    </div>
+   </div>
+</html>
+<script type="application/javascript">
+    Vue.component('todo-item', {
+         props: ['todo'],
+         template: '<li>{{ todo.text }}</li>'
+    })
+
+    var app = new Vue({
+       el: '#app',
+       data: {
+         message: 'Hello Vue!',
+         pageDate: '页面加载于 ' + new Date().toLocaleString(),
+         seen: true,
+         groceryList: [
+             {id: 0, text: '蔬菜'},
+             {id: 1, text: '水果'},
+             {id: 2, text: '主食'}
+         ]
+       },
+       methods: {
+         reverseMessage: function() {
+             this.message = this.message.split('').reverse().join('')
+         }
+       }
+
+     })
+     </script>
+</apex:page>

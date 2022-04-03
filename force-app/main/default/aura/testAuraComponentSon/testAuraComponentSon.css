@@ -1,0 +1,12 @@
+.THIS {
+	background: red;
+	text-align: center;
+	width: 100%;
+	height: 100px;
+}
+
+.THIS.divClass1 p {
+	line-height: 100PX;
+	height: 100PX;
+	color: white;
+}

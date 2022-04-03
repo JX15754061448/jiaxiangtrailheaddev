@@ -1,0 +1,35 @@
+<apex:page standardController="firstObject__c" recordSetVar="records" id="thePage">
+    <apex:form id="theForm">
+        <apex:pageBlock id="thePageBlock">
+            <apex:pageBlockTable value="{!records}" var="record" id="thePageBlockTable">
+                <apex:column >
+                    <apex:outputField value="{!record.Name}" id="AccountNameDOM" />
+                    <apex:facet name="header">Name</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!record.Id}" id="AccountTypeDOM" />
+                    <apex:facet name="header">Type</apex:facet>
+                </apex:column>
+                
+                <apex:inlineEditSupport event="ondblClick"
+                        showOnEdit="saveButton,cancelButton" hideOnEdit="editButton" />
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Edit" action="{!save}" id="editButton" />
+                <apex:commandButton value="Save" action="{!save}" id="saveButton" />
+                <apex:commandButton value="Cancel" action="{!cancel}" id="cancelButton" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:form >
+    <!-- other form elements ... -->
+    <apex:outputPanel id="locationPicker">
+        <apex:outputField value="{!record.Name}">
+            <apex:inlineEditSupport event="ondblClick" />
+        </apex:outputField>
+        
+    </apex:outputPanel>
+    <!-- ... -->
+    <apex:commandButton value="Refresh Picklists" reRender="locationPicker" />
+</apex:form>
+</apex:page>

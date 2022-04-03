@@ -1,0 +1,7 @@
+<aura:component>
+    <aura:attribute name="contentBody" type="String" />
+    <div class="container">
+        <lightning:icon size="small" iconName="utility:info_alt" alternativeText="Approved" />
+        {!v.contentBody}
+    </div>
+</aura:component>

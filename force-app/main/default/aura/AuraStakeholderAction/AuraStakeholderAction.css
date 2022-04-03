@@ -1,0 +1,22 @@
+.THIS .custom_lookup input[readonly] {
+    padding-left: 30px !important;
+}
+
+.THIS .multi_user_input .slds-form-element__label {
+    display: none;
+}
+.THIS .action_footer {
+    position:absolute;
+    bottom:82px;
+}
+
+.THIS .action_header,
+.THIS .action_footer {
+    width: 100%;
+    left: 0px;
+}
+
+.THIS .backgroundSpinner {
+    top: 50px;
+    height: 560px !important;
+}
