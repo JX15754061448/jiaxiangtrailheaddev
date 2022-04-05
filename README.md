@@ -21,12 +21,16 @@ The `sfdx-project.json` file contains useful configuration information for your 
 - [Authorize an Org Using the JWT Bearer Flow](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_jwt_flow.htm#sfdx_dev_auth_jwt_scratch)
 - [Reference vedio](https://www.youtube.com/watch?v=_eOXnb9pQAg)
 ## openssl
-- [生成key和iv key]
+https://gist.github.com/olopsman/44c7866c05e65fe4c4e3e4bbd98c9d2d
+- [生成key和ivkey]
 openssl enc -aes-256-cbc -k MySuperSecretPassPhrase -P -md sha1
 
 salt=BA2A126C7EDCA9E8
 key=0B6F1ECB15E48EBE676C87EFDE42794D26D78EB44AAF6FCF1619583AB2F5DCCA
 iv =ECDFF069275FF5B1C06CB26794AA8F52
 
-- [利用key和iv key加密server.key文件]
+- [利用key和ivkey加密server.key文件]
 openssl enc -aes-256-cbc -in server.key -out server.key.enc -base64 -K 0B6F1ECB15E48EBE676C87EFDE42794D26D78EB44AAF6FCF1619583AB2F5DCCA -iv ECDFF069275FF5B1C06CB26794AA8F52]
+
+- [利用key和ivkey解密server.key文件]
+openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out server.key -base64 -K 0B6F1ECB15E48EBE676C87EFDE42794D26D78EB44AAF6FCF1619583AB2F5DCCA -iv ECDFF069275FF5B1C06CB26794AA8F52
