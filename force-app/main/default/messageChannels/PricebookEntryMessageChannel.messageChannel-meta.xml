@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+   <masterLabel>PricebookEntryMessageChannel</masterLabel>
+   <isExposed>true</isExposed>
+   <description>This Lightning Message Channel sends Pricebook info</description>
+
+   <lightningMessageFields>
+       <fieldName>messageBody</fieldName>
+       <description>Message To Send</description>
+   </lightningMessageFields>
+
+</LightningMessageChannel>

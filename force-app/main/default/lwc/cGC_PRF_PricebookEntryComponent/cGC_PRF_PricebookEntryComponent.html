@@ -1,0 +1,39 @@
+<template>
+    <lightning-card  title="Pricebook Management" icon-name="standard:pricebook">
+        <div if:true={isRunning} class="loadingSpinner">
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </div>
+        <template for:each={products} for:item="product" >
+            <lightning-accordion key={product.Id} 
+                                allow-multiple-sections-open
+                                onsectiontoggle={handleSectionToggle}
+                                active-section-name={activeSections}>
+                <lightning-accordion-section name={product.Name} label={product.Name}>
+                    <!-- <lightning-datatable
+                            key-field="Id"
+                            data={product.PricebookEntries}
+                            columns={columns}
+                            hide-checkbox-column
+                            show-row-number-column
+                            onrowaction={handleRowAction}
+                            onsave={handleSave}
+                            draft-values={draftValues}>
+                    </lightning-datatable> -->
+                    <c-c-g-c_-p-r-f_-pricebook-entry-datatable
+                            class="pricebook_table"
+                            key-field="Id"
+                            data={product.PricebookEntries}
+                            columns={columns}
+                            hide-checkbox-column
+                            show-row-number-column
+                            onrowaction={handleRowAction}
+                            onsave={handleSave}
+                            draft-values={draftValues}
+                            data-table-id={product.Id}>
+                    </c-c-g-c_-p-r-f_-pricebook-entry-datatable>
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </template>
+    </lightning-card>
+    
+</template>

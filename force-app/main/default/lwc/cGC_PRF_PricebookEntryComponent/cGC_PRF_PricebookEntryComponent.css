@@ -1,0 +1,7 @@
+.pricebook_table .slds-table_header-fixed_container.slds-scrollable_x {
+    overflow: visible !important;
+}
+
+.pricebook_table .slds-scrollable_y {
+    overflow: visible !important;
+}
